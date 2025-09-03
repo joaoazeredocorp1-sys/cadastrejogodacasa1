@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - Casa de Apostas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container" id="login-container">
+        <img src="logo.png" alt="Logo" class="logo">
+        <h2 id="titulo-login">💰 Sua chance de mudar de vida começa aqui! 💰</h2>
+        <p id="frase-login">Ganhar dinheiro nunca foi tão fácil. Cadastre-se agora e descubra!</p>
+
+        <div id="form-cadastro">
+            <input type="email" id="cadastro-email" placeholder="Digite seu e-mail" required>
+            <input type="password" id="cadastro-senha" placeholder="Crie uma senha" required>
+            <button onclick="cadastrar()">Cadastrar</button>
+            <p id="mensagem-cadastro"></p>
+        </div>
+
+        <div id="form-login" style="display: none;">
+            <input type="email" id="login-email" placeholder="Digite seu e-mail" required>
+            <input type="password" id="login-senha" placeholder="Digite sua senha" required>
+            <button onclick="logar()">Entrar</button>
+            <p id="mensagem-login"></p>
+        </div>
+    </div>
+
+    <script>
+        const frases = [
+            "💸 Hoje pode ser seu dia de sorte!",
+            "🎰 Ganhar nunca foi tão fácil!",
+            "🚀 Transforme R$10 em R$1000, cadastre-se agora!",
+            "🔥 Milhares de jogadores já estão ganhando!",
+            "💎 Sua primeira vitória está a um clique!",
+            "🏆 Você nasceu para ganhar, não perca tempo!",
+            "🎯 Aposte com inteligência e veja seu saldo crescer!",
+            "💰 Mais de 80% dos usuários ganham nas primeiras tentativas!"
+        ];
+
+        function mostrarFraseAleatoria() {
+            const indice = Math.floor(Math.random() * frases.length);
+            document.getElementById("frase-login").innerText = frases[indice];
+        }
+
+        function cadastrar() {
+            let email = document.getElementById("cadastro-email").value;
+            let senha = document.getElementById("cadastro-senha").value;
+            if (email === "" || senha === "") {
+                document.getElementById("mensagem-cadastro").innerText = "⚠️ Preencha todos os campos!";
+                return;
+            }
+            localStorage.setItem("email", email);
+            localStorage.setItem("senha", senha);
+            document.getElementById("mensagem-cadastro").innerText = "✅ Cadastro realizado! Faça login.";
+            document.getElementById("form-cadastro").style.display = "none";
+            document.getElementById("form-login").style.display = "block";
+            document.getElementById("titulo-login").innerText = "🚀 Bem-vindo de volta!";
+            mostrarFraseAleatoria();
+        }
+
+        function logar() {
+            let email = document.getElementById("login-email").value;
+            let senha = document.getElementById("login-senha").value;
+            let emailSalvo = localStorage.getItem("email");
+            let senhaSalva = localStorage.getItem("senha");
+            if (email === emailSalvo && senha === senhaSalva) {
+                document.getElementById("mensagem-login").innerText = "🎉 Login realizado!";
+                setTimeout(() => {
+                    window.location.href = "https://joaoazeredocorp1-sys.github.io/Jogodacasauno/";
+                }, 1000);
+            } else {
+                document.getElementById("mensagem-login").innerText = "❌ E-mail ou senha incorretos!";
+            }
+        }
+
+        window.onload = mostrarFraseAleatoria;
+    </script>
+</body>
+</html>
