@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!-- saved from url=(0053)https://joaoazeredocorp1-sys.github.io/Jogodacasauno/ -->
+<html lang="pt-BR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>Jogo da Casa</title>
+    <link rel="stylesheet" href="./Jogo da Casa_files/style.css">
+</head>
+<body>
+    <div id="tela-pagamento" class="container">
+        <img src="./Jogo da Casa_files/logo.png" alt="Jogo da Casa" class="logo">
+        <h2>🎰 Bem-vindo ao Jogo da Casa 🎰</h2>
+        <p>Digite o valor que deseja depositar.<br>
+           Depósito mínimo: R$0,50<br>
+           Saldo mínimo para apostar: R$5,00
+        </p>
+        <div class="pix-box">
+            <label for="valorDeposito">💵 Valor do Depósito:</label><br>
+            <input type="number" id="valorDeposito" step="0.01" min="0.50" placeholder="Ex: 10.00">
+            <button onclick="gerarPix()">Gerar Chave Pix</button>
+        </div>
+        <div id="areaPix" style="display:none; margin-top:15px;">
+            <p>📥 <strong>Chave Pix gerada:</strong></p>
+            <input type="text" id="chavePix" readonly="">
+            <button onclick="copiarPix()">📋 Copiar Pix</button>
+            <br><br>
+            <button id="btnLiberar" onclick="liberarJogo()" style="display:none;">✅ Já paguei</button>
+        </div>
+    </div>
+
+    <div id="tela-jogo" class="container" style="display: none;">
+        <img src="./Jogo da Casa_files/logo.png" alt="Jogo da Casa" class="logo">
+        <p>Saldo: R$ <span id="saldo">8852.50</span></p>
+        <div class="slot-machine">
+            <div class="slot" id="slot1">🍒</div>
+            <div class="slot" id="slot2">🍋</div>
+            <div class="slot" id="slot3">🍇</div>
+        </div>
+        <button onclick="girar()">GIRAR 🎲</button>
+        <p id="mensagem"></p>
+        <div class="historico">
+            <h3>🧾 Histórico</h3>
+            <ul id="historico-lista"><li>-R$10.00 — Derrota.</li><li>-R$10.00 — Derrota.</li><li>-R$10.00 — Derrota.</li><li>-R$10.00 — Derrota.</li><li>-R$10.00 — Derrota.</li><li>-R$10.00 — Derrota.</li><li>-R$10.00 — Derrota.</li><li>-R$10.00 — Derrota.</li><li>-R$10.00 — Derrota.</li><li>-R$10.00 — Derrota.</li></ul>
+        </div>
+    </div>
+    <script src="./Jogo da Casa_files/script.js.download"></script>
+
+
+</body></html>
